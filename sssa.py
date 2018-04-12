@@ -39,8 +39,6 @@ class sssa:
     def recovery(self, shares):
         if (len(shares) != self.threshold):
             print("No enough secret shares.")
-            raise NotEnoughSharesError
-        ans = {}
         secret = 0
         for i in range(self.threshold):
             w = shares[i][1]
