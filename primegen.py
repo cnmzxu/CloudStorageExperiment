@@ -54,5 +54,8 @@ def generateLargePrime(k):
             return n
     return "Failure after "+ str(r_)  + " tries."
 
-fff = open("sssa.py", "a")
-fff.write(str(generateLargePrime(2048)))
+print(generateLargePrime(2070))
+print(generateLargePrime(1050))
+print(generateLargePrime(535))
+
+

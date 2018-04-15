@@ -7,7 +7,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
-import myerrors
+import myerror
 
 SALT = b'0123456789abcdef'
 
@@ -17,8 +17,7 @@ class EncSch:
 
     def Enc(self, key, plain):
         if len(key) != self.keysize:
-            print("Key_Length_Error_Enc")
-            raise myerrors.myerrors("Key_Length_Error_Enc")
+            raise myerror.myerror("Key_Length_Error_Enc")
 
         kdf =  PBKDF2HMAC(
                 algorithm = hashes.SHA256(),
@@ -33,8 +32,7 @@ class EncSch:
 
     def Dec(self, key, cipher):
         if len(key) != self.keysize:
-            print("Key_Length_Error_Dec")
-            raise myerrors.myerrors("Key_Length_Error_Dec")
+            raise myerror.myerror("Key_Length_Error_Dec")
 
         kdf =  PBKDF2HMAC(
             algorithm = hashes.SHA256(),
@@ -48,8 +46,7 @@ class EncSch:
         try:
             return f.decrypt(cipher)
         except:
-            print("Decrypt_Error")
-            raise myerrors.myerrors("Decrypt_Error")
+            raise myerror.myerror("Decrypt_Error")
 
 class Hash:
     def __init__(self, content = b"", bytesize = 64):

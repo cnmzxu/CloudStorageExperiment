@@ -1,54 +1,63 @@
+import math
 import random
+
+import myerror
 import translation
 
-#2048 bits
-PRIME1 = 26642305782553640600499410180168648140267981411862303823499017191536095889810897282774584920941184577953410850892419387312100349041117977412804559664196851385173233392880160689581774405432726466773745408164357833019937100917934662168984014161212910733789126921943450792163397814199345779743675468852056897996039819007412606419971702843391482131914974971926911205759486195362130292136408385973317330521698136207368628261315066110721871439076776015308601831609285240688643849928446221553693051463152830431220562303895376224075936309374285806425591314600877626968622957251094470642538236416045579460026371416755108118429
+#2070 bits
+PRIME1 = 112670236818672966462084349700290165356550375016925655364575996640577617897965098435948875592100066953832688448996119599700666698262273919269856852666432075410433025951703705205848224870757789325697033887299273663579207176475459083690834126398808269735152235954547562811538953075818917877314692531204767090875627381141377939140948640019182251221510629300918298062330264740103499925047316745310416424590584018399789081069785433067281125970339861510610269648600034007200610157667961575574586287958319242799890116326483448136646576001126690164760675657757728822136063559131947918389358404286379872283714170427234420085946330343
+#1050 bits
+PRIME2 = 7585358808511087815129894771036576423580204840699572218434791514925610705355836741544871565382844851692835024301121260127960156319421645848440957049808373883323734063203919445655150225035853759224972799016547420701950791101797030369207189272011763142251734642928713290690734486757817504046731438817416117426541577481
+#535 bits
+PRIME3 = 60161877336477840013993538172634380014092641908844646558968803515802693328585626031760680092315634311833585646797885751794848458398258714780442836257796364239969
 
-def getInverse(k):
-    if k > PRIME1:
-        print("Cannot get inverse.")
-        return None
-    exponent = PRIME1 - 2
-    w = k % PRIME1
+def inverse(a, b):
+    exp = b - 2
+    w = a
     ans = 1
-    while exponent > 0:
-        if exponent & 0x1 == 1:
-            ans = (ans * w) % PRIME1
-        w = (w ** 2) % PRIME1
-        exponent = exponent >> 1
+    while exp > 0:
+        if exp & 1 == 1:
+            ans = (ans * w) % b
+        w = (w ** 2) % b
+        exp = exp >> 1
     return ans
 
-class sssa:
-    def __init__(self, th, length):
-        self.threshold = thre
-        self.moudle = PRIME1
-        self.length = length
 
-    def share(self, bytelist):
-        if (len(bytelist) != self.bytelength):
-            print("No matchable bytelist.")
-            return None 
-        secret = translation.bytelist2int(bytelist)
-        uid = random.randint(1, PRIME1 - 1)
+class sssa:
+    def __init__(self, th, n, PRIME): #threshlod = th, bits length = n
+        self.th = th
+        self.P = PRIME
+        self.n = n
+        self.m = math.ceil(n / th)
+
+    def __inverse__(self, a):
+        return inverse(a, self.P)
+
+    def share(self, secret):#secret: n bits
+        if len(secret) > self.n:
+            raise myerror.myerror("Byteslength_Too_Large")
+
+        secret = secret[::-1]
+        x = random.randint((1 << self.m) + 1, self.P - 1)
         ans = 0
-        for i in range(self.threshold - 1):
-            ans = (ans * uid + bytelist[i]) % PRIME1
-        ans = (ans * uid + secret) % PRIME1
-        return (uid, ans)
+        for i in range(self.th):
+            ans = (ans * x + int(secret[(self.th - i - 1) * self.m :(self.th - i) * self.m][::-1].zfill(1),2)) % self.P
+        return (x, ans)
 
     def recovery(self, shares):
-        if (len(shares) != self.threshold):
-            print("No enough secret shares.")
+        if (len(shares) != self.th):
+            raise myerror.myerror("Error_With_Shares_Number")
+        
         secret = 0
-        for i in range(self.threshold):
+        for i in range(self.th):
             w = shares[i][1]
             xi = shares[i][0]
-            for j in range(self.threshold):
-                if (j != i):
-                    xj = shares[j][0]
-                    w = (((xj * getInverse(xj - xi)) % PRIME1) * w) % PRIME1
-            secret = (secret + w) % PRIME1
-        return list(translation.int2bytelist(secret, self.bytelength))
-     
-
-print(PRIME1)
+            for j in range(self.th):
+                if (j == i):
+                    continue
+                xj = shares[j][0]
+                if xj == xi:
+                    raise myerror.myerror("Shares_Equal_Error")
+                w = ((((xj - 2 ** self.m) * self.__inverse__(xj - xi)) % self.P) * w) % self.P
+            secret = (secret + w) % self.P
+        return bin(secret)[2:].zfill(self.n)
