@@ -1,5 +1,12 @@
+import os
+import random
+import bisect
+
+import sssa
+import translation
+
 class ufbase:
-    def __init__(self, kappa, DecryptFile):
+    def __init__(self, kappa, th, sigma, DecryptFile, ss):
         """
         Make a segment tree.
         A node in this tree is a 3-list: [leftson, rightson, NumberOfuf]
@@ -9,8 +16,12 @@ class ufbase:
         self.deduplist = []
         self.flaglist = dict()
         self.kappa = kappa
-        self.self.FILTRATION = 2 ** kappa - 1
+        self.FILTRATION = 2 ** kappa - 1
         self.DecryptFile = DecryptFile
+        self.th = th
+        self.sigma = sigma
+        self.ss = ss
+        self.DecFileNum = 0
 
     def insert(self, uf):
         """
@@ -133,7 +144,7 @@ class ufbase:
                 node[2] = 0
             else:
                 node[2] = node[0][2]
-            node[2] += self.__NodeDelete(node[1], layer + 1, (lb << 1) & self.FILTRATION, (ub << 1) & self.FILTRATION, hv1, vh2, ofName)
+            node[2] += self.__NodeDelete(node[1], layer + 1, (lb << 1) & self.FILTRATION, (ub << 1) & self.FILTRATION, hv1, hv2, ofName)
             return node[2]
         else:
             node[2] = self.__NodeDelete(node[0], layer + 1, (lb << 1) & self.FILTRATION, int('1' * (self.kappa - layer -1) + '0' * (layer + 1), 2), hv1, hv2, ofName) + self.__NodeDelete(node[1], layer + 1, 0, (ub << 1) & self.FILTRATION, hv1, hv2, ofName)
@@ -152,14 +163,14 @@ class ufbase:
             
         
     def recovery(self, mid):
-        bound = 2 ** SIGMA
+        bound = 2 ** self.sigma
         ub = mid + bound
         lb = mid - bound
         uploads = self.getUploads(lb, ub)
         minlag = min(uploads, key = lambda x: x[0])[0]
         maxlag = max(uploads, key = lambda x: x[0])[0]
         while True:
-            if (self.count(minlag - bound, minlag + bound) >= THRESHOLD):
+            if (self.count(minlag - bound, minlag + bound) >= self.th):
                 update = self.getUploads(minlag - bound, minlag - 1)
                 if (len(update) != 0):
                     minlag = min(update, key = lambda x: x[0])[0]
@@ -170,7 +181,7 @@ class ufbase:
                 break
         
         while True:
-            if (self.count(maxlag - bound, maxlag + bound) >= THRESHOLD):
+            if (self.count(maxlag - bound, maxlag + bound) >= self.th):
                 update = self.getUploads(maxlag + 1, maxlag + bound)
                 if (len(update) != 0):
                     maxlag = max(update, key = lambda x: x[0])[0]
@@ -181,27 +192,24 @@ class ufbase:
                 break
 
         flag = 0
-        ss = sssa.sssa(THRESHOLD, self.kappa // 4 + 6) 
-        for i in range(pickTime):
-            rightuploads = random.sample(uploads, THRESHOLD)
-            secret = ss.recovery([x[1] for x in rightuploads])
+        if len(uploads) >= self.th:
+            rightuploads = random.sample(uploads, self.th)
+            secret = self.ss.recovery([x[1] for x in rightuploads])
             if secret[-6] == 255 and secret[-5] == 255 and secret[-4] == 255 and secret[-3] == 255 and secret[-2] == 255 and secret[-1] == 255:
                 flag = 1
-                break
 
         if flag == 1:
             upload = rightuploads[0]
             key = bytes(secret[32:64])
             flag = translation.bytelist2int(secret[0:32])
-            upfile = client.DecryptFile(key, (upload[0] - flag), upload[2])
-            global DecFileNum
-            upfilename = 'Plaintexts/plain' + str(DecFileNum)
-            DecFileNum += 1
+            upfile = self.DecryptFile(key, (upload[0] - flag), upload[2])
+            upfilename = 'Plaintexts/plain' + str(self.DecFileNum)
+            self.DecFileNum += 1
             f = open(upfilename, 'wb')
             f.write(upfile)
             f.close()
             bisect.insort(self.deduplist, flag)
-            self.laglist[flag] = (key, upfilename)
+            self.flaglist[flag] = (key, upfilename)
             self.delete(lb, ub, key, flag, upfilename)
             return 1
         else:
@@ -212,16 +220,16 @@ class ufbase:
 
     def add(self, uf):
         """
-        Add uf into the ufbase.If find more than THRESHOLD uf it do recovery, else do insert
+        Add uf into the ufbase.If find more than self.th uf it do recovery, else do insert
         """
         mid = 2 ** self.kappa
-        bound = 2 ** SIGMA
+        bound = 2 ** self.sigma
         flag = uf[0]
         if len(self.deduplist) > 0:
             for flag1 in self.deduplist:
                 if abs(flag - flag1) <= bound or (mid - abs(flag - flag1)) <= bound:
-                    ddd = self.laglist[flag1]
-                    token1 = client.DecryptFile(ddd[0], flag - flag1, uf[2])
+                    ddd = self.flaglist[flag1]
+                    token1 = self.DecryptFile(ddd[0], flag - flag1, uf[2])
                     f = open(ddd[1], 'rb')
                     token2 = f.read()
                     f.close()
@@ -232,7 +240,7 @@ class ufbase:
         lb = flag - bound
         ub = flag + bound
         flag = 0
-        if self.count(lb, ub) > THRESHOLD:
+        if self.count(lb, ub) > self.th:
             flag = self.recovery(flag)
         if flag == 0:
             self.insert(uf)

@@ -39,14 +39,14 @@ class EoPCES:
         self.__hash__ = base.Hash(bytesize = kappa // 4).hash
         self.__ss__ = sssa.sssa(th, 2 * kappa + 16, PRIME)
 
-    def __DecryptFile__(hv1, hv2, uf, ofName):
+    def __DecryptFile__(self, hv1, hv2, uf, ofName):
         x = (uf[0] - int(hv2, 2)) % 2**self.kappa
         key = hv1 + bin(x)[2:self.kappa + 2].zfill(self.kappa)
         key = translation.bin2bytelist(key)
         f = open(uf[2], "rb")
         cipher = f.read()
         f.close()
-        plain = self.__Dec__(key, ciper)
+        plain = self.__Dec__(key, cipher)
         f = open(ofName)
         f.write(plain)
         f.close()
