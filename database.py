@@ -5,7 +5,7 @@ import bisect
 import sssa
 import translation
 
-class ufbase:
+class database:
     def __init__(self, kappa, th, sigma, DecryptFile, ss):
         """
         Make a segment tree.
@@ -32,7 +32,7 @@ class ufbase:
         secretShare: a tuple for secret sharing
         token: the encrypted file
         """
-        mid = 2 ** (self.kappa - 1)
+        mid = 1 << (self.kappa - 1)
         flag = uf[0]
         layer = 0
         nownode = self.root
