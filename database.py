@@ -4,6 +4,7 @@ import bisect
 
 import sssa
 import translation
+import rbtree
 
 class database:
     def __init__(self, kappa, th, sigma, DecryptFile, ss):
@@ -13,11 +14,10 @@ class database:
         This tree at most has self.kappa layers
         """
         self.root = [None, None, 0]
-        self.deduplist = []
-        self.flaglist = dict()
+        self.Dedup = rbtree.rbtree(lambda x:x[1]) #a value in Dedup is (hv1, hv2, F0_name)
         self.kappa = kappa
         self.FILTRATION = 2 ** kappa - 1
-        self.DecryptFile = DecryptFile
+        self.DecryptFile = DecryptFile #(hv1, hv2, uf)
         self.th = th
         self.sigma = sigma
         self.ss = ss
@@ -161,19 +161,37 @@ class database:
             self.__NodeDelete(self.root, 0, lowerbound, mid - 1, key, flag, upfile)
             self.__NodeDelete(self.root, 0, 0, upperbound - mid, key, flag, upfile)
             
-        
-    def recovery(self, mid):
+    
+    
+    def add(self, uf): #return true: DB is changed, return flase otherwise
+        """
+        Add uf into the ufbase.If find more than self.th uf it do recovery, else do insert
+        """
+        s = self.Dedup.find_near(uf[0], self.sigma)
+        for x in s:
+            f0 = open(x[2])
+            plain = f0.read()
+            f0.close()
+            f = slef.DecryptFile(x[0], x[1], x[2])
+            if f == f0:
+                return False
+        self.insert(uf)
+        return True
+
+
+    def recovery(self, uf):
         bound = 2 ** self.sigma
+        mid = uf[0]
         ub = mid + bound
         lb = mid - bound
         uploads = self.getUploads(lb, ub)
-        minlag = min(uploads, key = lambda x: x[0])[0]
-        maxlag = max(uploads, key = lambda x: x[0])[0]
+        minflag = min(uploads, key = lambda x: x[0])[0]
+        maxflag = max(uploads, key = lambda x: x[0])[0]
         while True:
-            if (self.count(minlag - bound, minlag + bound) >= self.th):
-                update = self.getUploads(minlag - bound, minlag - 1)
+            if (self.count(minflag - bound, minflag + bound) >= self.th):
+                update = self.getUploads(minflag - bound, minflag - 1)
                 if (len(update) != 0):
-                    minlag = min(update, key = lambda x: x[0])[0]
+                    minflag = min(update, key = lambda x: x[0])[0]
                     uploads = uploads + update
                 else:
                     break
@@ -215,32 +233,3 @@ class database:
         else:
             return 0
 
-            
-
-
-    def add(self, uf):
-        """
-        Add uf into the ufbase.If find more than self.th uf it do recovery, else do insert
-        """
-        mid = 2 ** self.kappa
-        bound = 2 ** self.sigma
-        flag = uf[0]
-        if len(self.deduplist) > 0:
-            for flag1 in self.deduplist:
-                if abs(flag - flag1) <= bound or (mid - abs(flag - flag1)) <= bound:
-                    ddd = self.flaglist[flag1]
-                    token1 = self.DecryptFile(ddd[0], flag - flag1, uf[2])
-                    f = open(ddd[1], 'rb')
-                    token2 = f.read()
-                    f.close()
-                    if token1 == token2:
-                        os.remove(uf[2])
-                        return
-                
-        lb = flag - bound
-        ub = flag + bound
-        flag = 0
-        if self.count(lb, ub) > self.th:
-            flag = self.recovery(flag)
-        if flag == 0:
-            self.insert(uf)

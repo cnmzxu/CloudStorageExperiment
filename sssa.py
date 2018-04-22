@@ -61,3 +61,14 @@ class sssa:
                 w = ((((xj - 2 ** self.m) * self.__inverse__(xj - xi)) % self.P) * w) % self.P
             secret = (secret + w) % self.P
         return bin(secret)[2:].zfill(self.n)
+
+def test():
+    ss = sssa(10, 2048, PRIME1)
+    t = random.randint(0, 2 ** 2048 - 1)
+    t = bin(t)[2:]
+    print(t)
+    shs = [ss.share(t) for i in range(10)]
+    r = ss.recovery(shs)
+    print(r == t)
+
+test()
