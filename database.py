@@ -172,8 +172,8 @@ class database:
             f0 = open(x[2])
             plain = f0.read()
             f0.close()
-            f = slef.DecryptFile(x[0], x[1], x[2])
-            if f == f0:
+            f = self.DecryptFile(x[0], x[1], uf[2])
+            if f == plain:
                 return False
         self.insert(uf)
         return True
@@ -199,7 +199,7 @@ class database:
                 break
         
         while True:
-            if (self.count(maxlag - bound, maxlag + bound) >= self.th):
+            if (self.count(maxflag - bound, maxflag + bound) >= self.th):
                 update = self.getUploads(maxlag + 1, maxlag + bound)
                 if (len(update) != 0):
                     maxlag = max(update, key = lambda x: x[0])[0]
@@ -209,27 +209,19 @@ class database:
             else:
                 break
 
-        flag = 0
         if len(uploads) >= self.th:
             rightuploads = random.sample(uploads, self.th)
             secret = self.ss.recovery([x[1] for x in rightuploads])
-            if secret[-6] == 255 and secret[-5] == 255 and secret[-4] == 255 and secret[-3] == 255 and secret[-2] == 255 and secret[-1] == 255:
-                flag = 1
-
-        if flag == 1:
-            upload = rightuploads[0]
-            key = bytes(secret[32:64])
-            flag = translation.bytelist2int(secret[0:32])
-            upfile = self.DecryptFile(key, (upload[0] - flag), upload[2])
-            upfilename = 'Plaintexts/plain' + str(self.DecFileNum)
-            self.DecFileNum += 1
-            f = open(upfilename, 'wb')
-            f.write(upfile)
-            f.close()
-            bisect.insort(self.deduplist, flag)
-            self.flaglist[flag] = (key, upfilename)
-            self.delete(lb, ub, key, flag, upfilename)
-            return 1
-        else:
-            return 0
+            if secret[-16:] == '1' * 16
+                print("Recovery Success.")
+                upload = rightuploads[0]
+                hv1 = secret[:self.kappa]
+                hv2 = secret[self.kappa:2 * self.kappa]
+                upfile = self.DecryptFile(hv1, hv2, upload[2])
+                upfilename = 'Plaintexts/plain' + str(self.DecFileNum)
+                self.DecFileNum += 1
+                f = open(upfilename, 'wb')
+                f.write(upfile)
+                f.close()
+                return (hv1, hv2, upfilename)
 
