@@ -84,9 +84,8 @@ class EoPCES:
 def test():
     server = EoPCES(1024, 1, 32, 20, sssa.PRIME1)
     for i in range(30):
+        print(i)
         uf = server.Upload("test.py", "Uploads/uploadfile" + str(i))
         server.Store(uf)
 
 test()
-
-

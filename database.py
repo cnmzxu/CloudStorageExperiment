@@ -17,7 +17,7 @@ class database:
         This tree at most has self.kappa layers
         """
         self.root = [None, None, 0]
-        self.Dedup = rbtree.rbtree(lambda x:x[1]) #a value in Dedup is (hv1, hv2, F0_name)
+        self.Dedup = rbtree.rbtree(lambda x:int(x[1], 2)) #a value in Dedup is (hv1, hv2, F0_name)
         self.kappa = kappa
         self.FILTRATION = 2 ** kappa - 1
         self.DecryptFile = DecryptFile #(hv1, hv2, ufname)
@@ -144,12 +144,12 @@ class database:
         """
         Add uf into the ufbase.If find more than self.th uf it do recovery, else do insert
         """
-        s = self.Dedup.find_near(uf[0], self.sigma)
+        s = self.Dedup.find_near(uf[0], 2 ** self.sigma)
         for x in s:
-            f0 = open(x[2])
+            f0 = open(x[2], 'rb')
             plain = f0.read()
             f0.close()
-            f = self.DecryptFile(x[0], x[1], uf[2])
+            f = self.DecryptFile(x[0], x[1], uf)
             if f == plain:
                 print("Deduplicated.")
                 os.remove(uf[2])
@@ -171,10 +171,8 @@ class database:
                 if (len(update) != 0):
                     minflag = min(update, key = lambda x: x[0])[0]
                     uploads = uploads + update
-                else:
-                    break
-            else:
-                break
+                    continue
+            break
         
         while True:
             if (self.count(maxflag - bound, maxflag + bound) >= self.th):
@@ -182,10 +180,8 @@ class database:
                 if (len(update) != 0):
                     maxflag = max(update, key = lambda x: x[0])[0]
                     uploads = uploads + update
-                else:
-                    break
-            else:
-                break
+                    continue
+            break
 
         if len(uploads) >= self.th:
             rightuploads = random.sample(uploads, self.th)
@@ -201,6 +197,7 @@ class database:
                 f = open(upfilename, 'wb')
                 f.write(upfile)
                 f.close()
+                self.Dedup.insert((hv1, hv2, upfilename))
                 return (hv1, hv2, upfilename, uploads)
             else:
                 print("Recovery Fail.")
@@ -208,7 +205,8 @@ class database:
     
     def deduplication(self, result):
         hv1, hv2, upfilename, uploads = result
-        f = open(upfilename)
+        self.Dedup.insert((hv1, hv2, upfilename))
+        f = open(upfilename, 'rb')
         of = f.read()
         f.close()
         for uf in uploads:

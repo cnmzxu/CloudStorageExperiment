@@ -14,7 +14,7 @@ class treenode:
         self.maxkey = key
 
     def __str__(self):
-        return str([self.color, self.key, self.left, self.right, self.parent, self.value])
+        return str([self.key, self.value])
 
 class rbtree:
     def __init__(self, key = lambda x:x):
@@ -139,26 +139,22 @@ class rbtree:
     def __len__(self):
         return self.size
     
-    def __print__(self, node, l):
+    def __print__(self, node, ind):
         if node != self.nil:
-            self.__print__(node.left, l)
-            l.append(node.key)
-            self.__print__(node.right, l)
-        if node.color == 1:
-            return node.left.color == 0 and node.right.color == 0
-        else:
-            return True
+            print(' ' * ind, node)
+            self.__print__(node.left, ind + 1)
+            self.__print__(node.right, ind + 1)
     
     def __str__(self):
-        l = []
-        b = self.__print__(self.root, l)
-        print(l)
-        return str(b)
+        self.__print__(self.root, 0)
+        return ''
 
 def test():
     t = rbtree(lambda x:x)
     for i in range(100):
         t.insert(random.randint(0, 10000))
-    print(t)
-    print(t.find_near(4000, 500))
+    t.insert(4000)
+    #print(t)
+    print(t.find_near(4000, 0))
+
 #test()
