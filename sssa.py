@@ -34,8 +34,8 @@ class sssa:
         return inverse(a, self.P)
 
     def share(self, secret):#secret: n bits
-        if len(secret) > self.n:
-            raise myerror.myerror("Byteslength_Too_Large")
+        if len(secret) != self.n:
+            raise myerror.myerror("Byteslength_Not_Match")
 
         secret = secret[::-1]
         x = random.randint((1 << self.m) + 1, self.P - 1)
@@ -64,11 +64,14 @@ class sssa:
 
 def test():
     ss = sssa(10, 2048, PRIME1)
-    t = random.randint(0, 2 ** 2048 - 1)
-    t = bin(t)[2:]
+    t = random.randint(0, 2 ** 2047 - 1)
+    t = bin(t)[2:]#.zfill(2048)
     print(t)
     shs = [ss.share(t) for i in range(10)]
     r = ss.recovery(shs)
-    print(r == t)
+    print(r)
+    print(len(t))
+    print(len(r))
+    print(r == t.zfill(2048))
 
-test()
+#test()
