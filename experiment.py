@@ -1,8 +1,6 @@
 import os
 import sys
 import shutil
-import client
-import server
 import time
 
 f = open("explog.txt", 'w')
@@ -36,7 +34,6 @@ Experiment1:
 For each size, upload 1 file for 400 times
 count the time, number of cipher and plaintext
 """
-retime = 1
 def exp1_func1(size, s, p, t):
     fresh()
     server.setParameter(s, p, t, 1)

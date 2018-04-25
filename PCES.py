@@ -11,6 +11,7 @@ class PCES:
         self.__Enc__ = base.EncSch(kappa // 8).Enc
         self.__Dec__ = base.EncSch(kappa // 8).Dec
         self.__hash__ = base.Hash(bytesize = kappa // 8).hash
+        self.database = set()
     
     def Upload(self, fileName, ufName):
         f = open(fileName, "rb")
@@ -27,16 +28,14 @@ class PCES:
         f = open(ufName, "wb")
         f.write(cipher)
         f.close()
-    
-    def Store(self, ufName, database, saveName):
-        f = open(ufName, "rb")
-        cipher = f.read()
-        f.close()
         h = self.__hash__(cipher)
-        if h not in database:
-            database.add(h)
-            f =open(saveName, "wb")
-            f.write(cipher)
+        return (h, ufName)
+    
+    def Store(self, uf):
+        h = uf[0]
+        if h not in self.database:
+            self.database.add(h)
             return True
         else:
+            os.remove(uf[1])
             return False

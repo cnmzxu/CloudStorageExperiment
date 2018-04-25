@@ -1,0 +1,31 @@
+Experiment1:
+Experiment1 for 2^10 bytes file:
+Average with kappa = 1024, p = 0.500000:
+Server Time: 0.002891
+Client Time: 42.878177
+Ciphertext Num: 400.000000
+Plaintext Num: 0.000000
+
+Experiment1 for 2^15 bytes file:
+Average with kappa = 1024, p = 0.500000:
+Server Time: 0.003914
+Client Time: 44.511793
+Ciphertext Num: 400.000000
+Plaintext Num: 0.000000
+
+Experiment1 for 2^20 bytes file:
+Average with kappa = 1024, p = 0.500000:
+Server Time: 0.006480
+Client Time: 60.823249
+Ciphertext Num: 400.000000
+Plaintext Num: 0.000000
+
+Experiment1 for 2^25 bytes file:
+Average with kappa = 1024, p = 0.500000:
+Server Time: 0.010019
+Client Time: 579.469960
+Ciphertext Num: 400.000000
+Plaintext Num: 0.000000
+
+
+
