@@ -35,7 +35,7 @@ class PCES:
         h = self.__hash__(cipher)
         if h not in database:
             database.add(h)
-            f =open(saveName, "wb")
+            f = open(saveName, "wb")
             f.write(cipher)
             return True
         else:
