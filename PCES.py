@@ -23,19 +23,15 @@ class PCES:
             key = self.__hash__(content)
         else:
             key = os.urandom(self.kappa // 8)
-        
         cipher = self.__Enc__(key, content)
         f = open(ufName, "wb")
         f.write(cipher)
         f.close()
-        h = self.__hash__(cipher)
-        return (h, ufName)
+        return (key, ufName)
     
     def Store(self, uf):
         h = uf[0]
         if h not in self.database:
             self.database.add(h)
-            return True
         else:
             os.remove(uf[1])
-            return False
