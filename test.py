@@ -22,7 +22,7 @@ kdf =  PBKDF2HMAC(
         )
 key = os.urandom(32)
 iv = os.urandom(16)
-cipher = Cipher(algorithms.AES(key))
+cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
 encryptor1 = cipher.encryptor()
 encryptor2 = cipher.encryptor()
 ct = encryptor1.update(b"a secret message")

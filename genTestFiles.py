@@ -6,6 +6,10 @@ def genFile(length):
         f.write(os.urandom(2 ** length))
         f.close()
 
+try:
+    os.mkdir("ExperimentFiles")
+except:
+    None
 genFile(10)
 genFile(15)
 genFile(20)

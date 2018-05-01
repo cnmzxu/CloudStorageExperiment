@@ -88,4 +88,4 @@ def test():
         uf = server.Upload("test.py", "Uploads/uploadfile" + str(i))
         server.Store(uf)
 
-test()
+#test()

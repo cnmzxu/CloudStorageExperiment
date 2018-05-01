@@ -114,10 +114,9 @@ def exp2_func2(size, kappa, p):
     f.write("Ciphertext Num: %f\n" % (cn / repeat_time))
 
 def exp2_func3(size):
-    """for kappa in [256, 512, 1024]:
+    for kappa in [256, 512, 1024]:
         for p in [0.1, 0.5, 0.9]:
-            exp2_func2(size, kappa, p)"""
-    exp2_func2(size, 1024, 0.1)
+            exp2_func2(size, kappa, p)
 
 def exp2():
     f.write("Experiment2:\n")

@@ -151,7 +151,6 @@ class database:
             f0.close()
             f = self.DecryptFile(x[0], x[1], uf)
             if f == plain:
-                print("Deduplicated.")
                 os.remove(uf[2])
                 return False
         self.insert(uf)
@@ -187,7 +186,6 @@ class database:
             rightuploads = random.sample(uploads, self.th)
             secret = self.ss.recovery([x[1] for x in rightuploads])
             if secret[-16:] == '1' * 16:
-                print("Recovery Success.")
                 upload = rightuploads[0]
                 hv1 = secret[:self.kappa]
                 hv2 = secret[self.kappa:2 * self.kappa]
