@@ -10,8 +10,7 @@ try:
     os.mkdir("ExperimentFiles")
 except:
     None
-genFile(10)
-genFile(15)
-genFile(20)
-genFile(25)
-#genFile(30)
+
+for size in range(10, 30, 2):
+    genFile(size)
+

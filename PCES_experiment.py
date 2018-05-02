@@ -4,7 +4,7 @@ import os
 
 import PCES
 
-repeat_time = 1
+repeat_time = 10
 
 clienttime = 0
 servertime = 0
@@ -67,10 +67,8 @@ def exp1_func3(size):
 
 def exp1():
     f.write("Experiment1:\n")
-    exp1_func3(10)
-    exp1_func3(15)
-    exp1_func3(20)
-    exp1_func3(25)
+    for size in range(10, 28, 2):
+        exp1_func3(size)
     f.write("\n\n")
 
 """
@@ -108,19 +106,17 @@ def exp2_func2(size, kappa, p):
             st += x[0]
             ct += x[1]
             cn += x[2]
-    f.write("Average with kappa = %d, p = %f\n" % (kappa, p))
+    f.write("Average with size = 2^%d bytes, kappa = %d, p = %f\n" % (size, kappa, p))
     f.write("Server Time: %f\n" % (st / repeat_time))
     f.write("Client Time: %f\n" % (ct / repeat_time))
     f.write("Ciphertext Num: %f\n" % (cn / repeat_time))
 
 def exp2_func3(size):
     for kappa in [256, 512, 1024]:
-        for p in [0.1, 0.5, 0.9]:
+        for p in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
             exp2_func2(size, kappa, p)
 
 def exp2():
     f.write("Experiment2:\n")
-    exp2_func3(20)
-
-exp1()
-exp2()
+    for size in range(10, 28, 2):
+        exp2_func3(size)

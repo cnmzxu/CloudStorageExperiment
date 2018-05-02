@@ -5,7 +5,7 @@ import os
 import EoPCES
 import sssa
 
-repeat_time = 1
+repeat_time = 10
 
 clienttime = 0
 servertime = 0
@@ -71,10 +71,8 @@ def exp1_func3(size):
 
 def exp1():
     f.write("Experiment1:\n")
-    exp1_func3(10)
-    exp1_func3(15)
-    exp1_func3(20)
-    exp1_func3(25)
+    for size in range(10, 28, 2):
+        exp1_func3(size)
     f.write("\n\n")
 
 """
@@ -116,17 +114,13 @@ def exp2_func2(size, kappa, p, sigma, th, PRIME):
     f.write("Plaintext Num: %f\n" % (pn / repeat_time))
 
 def exp2_func3(size):
-    """for kappa in [(256, sssa.PRIME3), (512, sssa.PRIME2), (1024, sssa.PRIME1)]:
-        for p in [0.1, 0.5, 0.9]:
+    for kappa in [(256, sssa.PRIME3), (512, sssa.PRIME2), (1024, sssa.PRIME1)]:
+        for p in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
             for sigma in [50, 100, 200]:
                 for th in [20, 40, 100]:
-                    exp2_func2(size, kappa[0], p, sigma, th, kappa[1])"""
-    exp2_func2(size, 256, 0.5, 100, 20, sssa.PRIME3)
+                    exp2_func2(size, kappa[0], p, sigma, th, kappa[1])
 
 def exp2():
     f.write("Experiment2:\n")
-    exp2_func3(20)
-#print("exp1")
-#exp1()
-print("exp2")
-exp2()
+    for size in range(10, 28, 2):
+        exp2_func3(size)

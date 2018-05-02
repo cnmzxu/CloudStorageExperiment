@@ -1,6 +1,0 @@
-Experiment2:
-Average with kappa = 256, p = 0.500000, sigma = 100, th = 20
-Server Time: 321.921947
-Client Time: 645.719070
-Ciphertext Num: 2014.000000
-Plaintext Num: 10.000000
