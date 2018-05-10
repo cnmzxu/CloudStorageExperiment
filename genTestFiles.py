@@ -11,6 +11,6 @@ try:
 except:
     None
 
-for size in range(10, 30, 2):
+for size in range(10, 28, 2):
     genFile(size)
 
