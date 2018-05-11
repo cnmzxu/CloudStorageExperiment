@@ -1,0 +1,318 @@
+Experiment1:
+size = 2^20 bytes, kappa = 512, p = 0.5, sigma = 2^100, th = 20:
+Average with size = 2^10 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 28.680982
+Client Time: 39.549677
+Average with size = 2^12 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 27.844044
+Client Time: 39.425356
+Average with size = 2^14 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 28.661719
+Client Time: 39.436707
+Average with size = 2^16 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 29.386426
+Client Time: 39.955678
+Average with size = 2^18 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 30.191469
+Client Time: 41.888860
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 32.197941
+Client Time: 50.144658
+Average with size = 2^22 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 42.315189
+Client Time: 82.469074
+Average with size = 2^24 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 88.269148
+Client Time: 219.754965
+Average with size = 2^26 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 251.668375
+Client Time: 788.691023
+size = 2^20 bytes, kappa = 512, p = 0.5, sigma = 2^100, th = 20:
+Average with size = 2^20 bytes, kappa = 256, p = 0.500000, simga = 100, th = 20:
+Server Time: 24.768651
+Client Time: 48.663066
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 31.631708
+Client Time: 50.040523
+Average with size = 2^20 bytes, kappa = 1024, p = 0.500000, simga = 100, th = 20:
+Server Time: 80.951871
+Client Time: 54.988724
+size = 2^20 bytes, kappa = 512, p = 0.5, sigma = 2^100, th = 20:
+Average with size = 2^20 bytes, kappa = 512, p = 0.100000, simga = 100, th = 20:
+Server Time: 14.903421
+Client Time: 50.721928
+Average with size = 2^20 bytes, kappa = 512, p = 0.200000, simga = 100, th = 20:
+Server Time: 18.060963
+Client Time: 50.010236
+Average with size = 2^20 bytes, kappa = 512, p = 0.300000, simga = 100, th = 20:
+Server Time: 26.006802
+Client Time: 50.099059
+Average with size = 2^20 bytes, kappa = 512, p = 0.400000, simga = 100, th = 20:
+Server Time: 26.214570
+Client Time: 50.008938
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 31.153529
+Client Time: 50.312869
+Average with size = 2^20 bytes, kappa = 512, p = 0.600000, simga = 100, th = 20:
+Server Time: 35.726080
+Client Time: 50.241561
+Average with size = 2^20 bytes, kappa = 512, p = 0.700000, simga = 100, th = 20:
+Server Time: 41.131833
+Client Time: 50.183088
+Average with size = 2^20 bytes, kappa = 512, p = 0.800000, simga = 100, th = 20:
+Server Time: 44.672942
+Client Time: 49.996819
+Average with size = 2^20 bytes, kappa = 512, p = 0.900000, simga = 100, th = 20:
+Server Time: 48.492986
+Client Time: 50.000234
+size = 2^20 bytes, kappa = 512, p = 0.5, sigma = 2^100, th = 20:
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 50, th = 20:
+Server Time: 29.853358
+Client Time: 50.024566
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 60, th = 20:
+Server Time: 31.515556
+Client Time: 50.185968
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 70, th = 20:
+Server Time: 31.901108
+Client Time: 50.029265
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 80, th = 20:
+Server Time: 31.152494
+Client Time: 50.625619
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 90, th = 20:
+Server Time: 30.943154
+Client Time: 50.284773
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 33.500710
+Client Time: 50.765415
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 110, th = 20:
+Server Time: 33.474812
+Client Time: 50.371550
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 120, th = 20:
+Server Time: 31.184142
+Client Time: 50.173044
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 130, th = 20:
+Server Time: 30.581942
+Client Time: 50.133400
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 140, th = 20:
+Server Time: 32.672021
+Client Time: 49.977156
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 150, th = 20:
+Server Time: 31.394062
+Client Time: 50.068912
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 160, th = 20:
+Server Time: 32.307040
+Client Time: 49.873859
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 170, th = 20:
+Server Time: 31.777483
+Client Time: 49.875966
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 180, th = 20:
+Server Time: 32.872438
+Client Time: 50.057597
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 190, th = 20:
+Server Time: 32.958284
+Client Time: 49.945991
+size = 2^20 bytes, kappa = 512, p = 0.5, sigma = 2^100, th = 20:
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 10:
+Server Time: 25.702412
+Client Time: 50.730129
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 12:
+Server Time: 27.045141
+Client Time: 49.779577
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 14:
+Server Time: 28.387976
+Client Time: 50.058554
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 16:
+Server Time: 27.911906
+Client Time: 50.256861
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 18:
+Server Time: 30.974115
+Client Time: 49.859230
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 20:
+Server Time: 31.113508
+Client Time: 49.883154
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 22:
+Server Time: 32.290036
+Client Time: 50.373717
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 24:
+Server Time: 34.179128
+Client Time: 50.038589
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 26:
+Server Time: 37.171030
+Client Time: 50.616037
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 28:
+Server Time: 41.299693
+Client Time: 50.325681
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 30:
+Server Time: 41.109359
+Client Time: 49.825819
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 32:
+Server Time: 45.131409
+Client Time: 49.868912
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 34:
+Server Time: 49.311348
+Client Time: 49.933924
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 36:
+Server Time: 49.112795
+Client Time: 50.197634
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, simga = 100, th = 38:
+Server Time: 54.180960
+Client Time: 50.026803
+Experiment2:
+size = 2^20 bytes, kappa = 512, p = 0.5, sigma = 2^100, th = 20:
+Average with size = 2^10 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 2025.000000
+Plaintext Num: 10.000000
+Average with size = 2^12 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 1927.000000
+Plaintext Num: 10.000000
+Average with size = 2^14 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 1990.000000
+Plaintext Num: 10.000000
+Average with size = 2^16 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 2015.000000
+Plaintext Num: 10.000000
+Average with size = 2^18 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 1999.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 2075.000000
+Plaintext Num: 10.000000
+Average with size = 2^22 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 2008.000000
+Plaintext Num: 10.000000
+Average with size = 2^24 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 2026.000000
+Plaintext Num: 10.000000
+Average with size = 2^26 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 1982.000000
+Plaintext Num: 10.000000
+size = 2^20 bytes, kappa = 512, p = 0.5, sigma = 2^100, th = 20:
+Average with size = 2^20 bytes, kappa = 256, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 1978.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 2001.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 1024, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 2024.000000
+Plaintext Num: 10.000000
+size = 2^20 bytes, kappa = 512, p = 0.5, sigma = 2^100, th = 20:
+Average with size = 2^20 bytes, kappa = 512, p = 0.100000, sigma = 100, th = 20
+Ciphertext Num: 3586.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.200000, sigma = 100, th = 20
+Ciphertext Num: 3222.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.300000, sigma = 100, th = 20
+Ciphertext Num: 2786.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.400000, sigma = 100, th = 20
+Ciphertext Num: 2410.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 1948.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.600000, sigma = 100, th = 20
+Ciphertext Num: 1655.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.700000, sigma = 100, th = 20
+Ciphertext Num: 1180.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.800000, sigma = 100, th = 20
+Ciphertext Num: 828.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.900000, sigma = 100, th = 20
+Ciphertext Num: 402.000000
+Plaintext Num: 10.000000
+size = 2^20 bytes, kappa = 512, p = 0.5, sigma = 2^100, th = 20:
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 50, th = 20
+Ciphertext Num: 1939.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 60, th = 20
+Ciphertext Num: 2036.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 70, th = 20
+Ciphertext Num: 2026.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 80, th = 20
+Ciphertext Num: 1946.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 90, th = 20
+Ciphertext Num: 1996.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 2034.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 110, th = 20
+Ciphertext Num: 2020.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 120, th = 20
+Ciphertext Num: 2018.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 130, th = 20
+Ciphertext Num: 2012.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 140, th = 20
+Ciphertext Num: 2029.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 150, th = 20
+Ciphertext Num: 1964.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 160, th = 20
+Ciphertext Num: 2003.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 170, th = 20
+Ciphertext Num: 1986.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 180, th = 20
+Ciphertext Num: 1994.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 190, th = 20
+Ciphertext Num: 1974.000000
+Plaintext Num: 10.000000
+size = 2^20 bytes, kappa = 512, p = 0.5, sigma = 2^100, th = 20:
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 10
+Ciphertext Num: 2010.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 12
+Ciphertext Num: 1996.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 14
+Ciphertext Num: 2086.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 16
+Ciphertext Num: 1967.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 18
+Ciphertext Num: 2003.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 20
+Ciphertext Num: 2007.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 22
+Ciphertext Num: 1969.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 24
+Ciphertext Num: 2009.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 26
+Ciphertext Num: 1997.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 28
+Ciphertext Num: 1987.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 30
+Ciphertext Num: 1988.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 32
+Ciphertext Num: 2044.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 34
+Ciphertext Num: 2023.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 36
+Ciphertext Num: 2022.000000
+Plaintext Num: 10.000000
+Average with size = 2^20 bytes, kappa = 512, p = 0.500000, sigma = 100, th = 38
+Ciphertext Num: 1992.000000
+Plaintext Num: 10.000000
